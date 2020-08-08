@@ -28,7 +28,7 @@ class BooleanOperatorsTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        boolean[] expectedResult = {};
+        boolean[] expectedResult = {true,false,false,true,true,false,true,false,false,true,true,false,false,true};
         // --end-->
 
         assertArrayEquals(expectedResult, actualResults);
@@ -41,9 +41,9 @@ class BooleanOperatorsTest {
 
         // TODO: please write down the result directly to pass the test.
         // <--start
-        final int expected = 0;
+        //10010001101001010101111001101 &  11111111111100000000 = 1001010101100000000
+        final int expected = 305920;
         // --end-->
-
         assertEquals(expected, value & mask);
     }
 
@@ -54,7 +54,9 @@ class BooleanOperatorsTest {
 
         // TODO: please write down the result directly to pass the test.
         // <--start
-        final int expected = 0;
+        // 0x1234_0000 | 0x0000_abcd = 0x1234_abcd
+        // 10010001101000000000000000000 | 1010101111001101 =  10010001101001010101111001101;
+        final int expected = 305441741;
         // --end-->
 
         assertEquals(expected, value | mask);
@@ -63,12 +65,13 @@ class BooleanOperatorsTest {
     @Test
     void should_do_bitwise_not_operation() {
         final int value = 0x0000_ffff;
-
         // TODO: please write down the result directly to pass the test.
         // <--start
-        final int expected = 0;
+        //  65535   1111111111111111
+        //原码 00000000000000000 1111111111111111
+        //取异 11111111111111111 0000000000000000
+        final int expected = -65536;
         // --end-->
-
         assertEquals(expected, ~value);
     }
 }
